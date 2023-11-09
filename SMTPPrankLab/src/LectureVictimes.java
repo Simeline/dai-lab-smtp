@@ -37,7 +37,9 @@ public class LectureVictimes {
 //            System.out.println((i + 1) + ")" + messages.get(i));
 //        }
 
-        Group newGrp = new Group(3);
+        Group newGrp = new Group();
+
+        // Afficher par défaut 3 adresses mail tirées aléatoirement du fichier victims.txt.
         for (Mail m : newGrp.getListeVictimes())
             System.out.println(m.getMail());
     }

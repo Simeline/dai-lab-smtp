@@ -14,6 +14,11 @@ public class Group {
         }
     }
 
+    // Constructeur par défaut qui met une taille à 3
+    public Group() {
+        this(3); // Appelle le constructeur avec un argument
+    }
+
     public List<Mail> getListeVictimes() {
         return this.listeVictimes;
     }

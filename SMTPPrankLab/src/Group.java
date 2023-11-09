@@ -25,7 +25,7 @@ public class Group {
         return this.listeVictimes;
     }
 
-    public int size() {
+    public int sizeOfVictims() {
         return this.taille - 1; // -1 car j'exclu l'émetteur
     }
 }

@@ -12,42 +12,6 @@ import java.util.regex.Pattern;
 
 public class LectureVictimes {
 
-    public static void main(String[] args) {
-        String pathVictimes = "config/victims.txt";
-        List<String> victimes = lireListeVictimes(pathVictimes);
-
-//        // Afficher les victimes
-//        for (String victime : victimes) {
-//            System.out.println(victime);
-//        }
-
-        String pathMessagesJ = "config/messagesJ.json"; // Assurez-vous que le chemin soit correct
-        List<Message> messagesJ = lireListeMessagesJSON(pathMessagesJ);
-
-//        // Afficher les messages du file json
-//        for (int i = 0; i < messagesJ.size(); i++) {
-//            System.out.println((i + 1) + ")\n" + messagesJ.get(i) + "\n");
-//        }
-
-        String pathMessages = "config/messages.txt";
-        List<String> messages = lireListeMessagesTXT(pathMessages);
-
-//        // Afficher les messages du file txt
-//        for (int i = 0; i < messages.size(); i++) {
-//            System.out.println((i + 1) + ")" + messages.get(i));
-//        }
-
-        Group newGrp = new Group();
-
-//        // Afficher par défaut 3 adresses mail tirées aléatoirement du fichier victims.txt.
-//        for (Mail m : newGrp.getListeVictimes())
-//            System.out.println(m.getMail());
-
-        // Afficher la répartition du groupe en vue d'envoyer les mails
-        Prank p = new Prank();
-        p.display();
-    }
-
     public static final Pattern ADDRESSE_MAIL_VALIDE =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 

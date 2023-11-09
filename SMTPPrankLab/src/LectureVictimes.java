@@ -39,9 +39,13 @@ public class LectureVictimes {
 
         Group newGrp = new Group();
 
-        // Afficher par défaut 3 adresses mail tirées aléatoirement du fichier victims.txt.
-        for (Mail m : newGrp.getListeVictimes())
-            System.out.println(m.getMail());
+//        // Afficher par défaut 3 adresses mail tirées aléatoirement du fichier victims.txt.
+//        for (Mail m : newGrp.getListeVictimes())
+//            System.out.println(m.getMail());
+
+        // Afficher la répartition du groupe en vue d'envoyer les mails
+        Prank p = new Prank();
+        p.display();
     }
 
     public static final Pattern ADDRESSE_MAIL_VALIDE =
@@ -120,7 +124,7 @@ public class LectureVictimes {
                 if (isEmailValid(ligne))
                     victimes.add(ligne);
                 else {
-                    System.out.println("ERREUR dans l'adresse mail : " + ligne);
+                    System.err.println("ERREUR dans l'adresse mail : " + ligne);
                 }
             }
         }

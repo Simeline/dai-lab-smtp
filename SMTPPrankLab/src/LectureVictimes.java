@@ -68,16 +68,16 @@ public class LectureVictimes {
     }
 
     public static void main(String[] args) {
-        String path = "/Users/valbu/Desktop/DAI/labos/labo3/dai-lab-smtp/SMTPPrankLab/config/victims.txt";
-        List<String> victimes = lireListeVictimes(path);
+        String pathVictimes = "config/victims.txt";
+        List<String> victimes = lireListeVictimes(pathVictimes);
 
         // Afficher les victimes
         for (String victime : victimes) {
             System.out.println(victime);
         }
 
-        path = "/Users/valbu/Desktop/DAI/labos/labo3/dai-lab-smtp/SMTPPrankLab/config/messages.txt";
-        List<String> messages = lireListeMessages(path);
+        String pathMessages = "config/messages.txt";
+        List<String> messages = lireListeMessages(pathMessages);
 
 //        // Afficher les messages
 //        for (int i = 0; i < messages.size(); i++) {

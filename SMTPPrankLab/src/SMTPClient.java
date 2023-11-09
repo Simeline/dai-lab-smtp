@@ -1,7 +1,7 @@
 import java.io.*;
 import java.net.Socket;
 
-public class smptClient {
+public class SMTPClient {
     public static void main(String[] args) {
 
         try {

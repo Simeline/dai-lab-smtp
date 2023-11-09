@@ -24,7 +24,7 @@ public class LectureVictimes {
         String pathMessagesJ = "config/messagesJ.json"; // Assurez-vous que le chemin soit correct
         List<Message> messagesJ = lireListeMessagesJSON(pathMessagesJ);
 
-//        // Afficher les messages
+//        // Afficher les messages du file json
 //        for (int i = 0; i < messagesJ.size(); i++) {
 //            System.out.println((i + 1) + ")\n" + messagesJ.get(i) + "\n");
 //        }
@@ -32,10 +32,14 @@ public class LectureVictimes {
         String pathMessages = "config/messages.txt";
         List<String> messages = lireListeMessagesTXT(pathMessages);
 
-//        // Afficher les messages
+//        // Afficher les messages du file txt
 //        for (int i = 0; i < messages.size(); i++) {
 //            System.out.println((i + 1) + ")" + messages.get(i));
 //        }
+
+        Group newGrp = new Group(3);
+        for (Mail m : newGrp.getListeVictimes())
+            System.out.println(m.getMail());
     }
 
     public static final Pattern ADDRESSE_MAIL_VALIDE =
@@ -113,8 +117,9 @@ public class LectureVictimes {
             while ((ligne = reader.readLine()) != null) {
                 if (isEmailValid(ligne))
                     victimes.add(ligne);
-                else
+                else {
                     System.out.println("ERREUR dans l'adresse mail : " + ligne);
+                }
             }
         }
         catch (IOException e) {

@@ -16,18 +16,18 @@ public class LectureVictimes {
         String pathVictimes = "config/victims.txt";
         List<String> victimes = lireListeVictimes(pathVictimes);
 
-        // Afficher les victimes
-        for (String victime : victimes) {
-            System.out.println(victime);
-        }
+//        // Afficher les victimes
+//        for (String victime : victimes) {
+//            System.out.println(victime);
+//        }
 
         String pathMessagesJ = "config/messagesJ.json"; // Assurez-vous que le chemin soit correct
         List<Message> messagesJ = lireListeMessagesJSON(pathMessagesJ);
 
-        // Afficher les messages
-        for (int i = 0; i < messagesJ.size(); i++) {
-            System.out.println((i + 1) + ")" + messagesJ.get(i));
-        }
+//        // Afficher les messages
+//        for (int i = 0; i < messagesJ.size(); i++) {
+//            System.out.println((i + 1) + ")\n" + messagesJ.get(i) + "\n");
+//        }
 
         String pathMessages = "config/messages.txt";
         List<String> messages = lireListeMessagesTXT(pathMessages);

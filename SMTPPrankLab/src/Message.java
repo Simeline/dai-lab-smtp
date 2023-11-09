@@ -1,6 +1,6 @@
 public class Message {
-    private String subject;
-    private String body;
+    private final String subject;
+    private final String body;
 
     public Message(String subject, String body) {
         this.subject = subject;
@@ -17,6 +17,6 @@ public class Message {
 
     @Override
     public String toString() {
-        return "Subject: " + subject + "\n" + body;
+        return "Subject: " + subject + "\n" + "Body: " + body;
     }
 }

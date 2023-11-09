@@ -1,0 +1,20 @@
+{
+  "name": "config",
+  "version": "1.0.0",
+  "dependencies": {
+  },
+  "messages": [
+    {
+      "Subject": "Mon amour",
+      "Body": "Salut, tu vas bien ?\nOui merci!"
+    },
+    {
+      "Subject": "Réponse à mon amour",
+      "Body": "Tu veux aller au cinéma?\nPas aujourd'hui."
+    },
+    {
+      "Subject": "Rupture",
+      "Body": "Je te quitte"
+    }
+  ]
+}

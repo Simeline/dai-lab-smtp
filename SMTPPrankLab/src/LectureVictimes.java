@@ -17,7 +17,7 @@ public class LectureVictimes {
         return match.find();
     }
 
-    // static parce que c'est indépendant de la classe, on peut utiliser la fonction sans créer instancier la classe
+    // static parce que c'est indépendant de la classe, on peut utiliser la fonction sans créer / instancier la classe
     public static List<String> lireListeMessages(String path) {
 
         List<String> messages = new ArrayList<>();

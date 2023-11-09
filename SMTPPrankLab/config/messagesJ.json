@@ -1,9 +1,4 @@
-{
-  "name": "config",
-  "version": "1.0.0",
-  "dependencies": {
-  },
-  "messages": [
+[
     {
       "Subject": "Mon amour",
       "Body": "Salut, tu vas bien ?\nOui merci!"
@@ -16,5 +11,5 @@
       "Subject": "Rupture",
       "Body": "Je te quitte"
     }
-  ]
-}
+  
+]

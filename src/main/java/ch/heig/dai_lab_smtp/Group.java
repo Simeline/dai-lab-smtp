@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Group {
-    private final List<Mail> listeVictimes = new ArrayList<>();
+    private final List<String> listeVictimes = new ArrayList<>();
     private final int taille;
 
     /**
@@ -17,10 +17,10 @@ public class Group {
     public Group(int taille) {
         this.taille = taille;
         String pathVictimes = "src/main/resources/victims.txt";
-        List<String> victimes = LectureVictimes.lireListeVictimes(pathVictimes);
+        List<String> victimes = ReadFiles.lireListeVictimes(pathVictimes);
         Collections.shuffle(victimes);
         for (int i = 0; i < taille; i++) {
-            listeVictimes.add(new Mail(victimes.get(i)));
+            listeVictimes.add(victimes.get(i));
         }
     }
 
@@ -28,10 +28,10 @@ public class Group {
      *     Constructeur par défaut qui met une taille à 4
      */
     public Group() {
-        this(4); // Appelle le constructeur avec un argument
+        this(5); // Appelle le constructeur avec un argument
     }
 
-    public List<Mail> getListeVictimes() {
+    public List<String> getListeVictimes() {
         return this.listeVictimes;
     }
 

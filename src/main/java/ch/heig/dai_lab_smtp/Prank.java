@@ -1,14 +1,18 @@
 package ch.heig.dai_lab_smtp;
 
 public class Prank {
-    private final Mail sender;
+    private final String sender;
     private final Group receivers;
 
     /**
      * Constructeur qui permet de séparer l'émetteur des récepteurs
      */
     public Prank() {
-        this.receivers = new Group();
+        this(5);
+    }
+
+    public Prank(int groupSize) {
+        this.receivers = new Group(groupSize);
         this.sender = receivers.getListeVictimes().get(0);
         receivers.getListeVictimes().remove(0);
     }
@@ -18,11 +22,14 @@ public class Prank {
      */
     public void display() {
         StringBuilder messageCourant = new StringBuilder();
-        messageCourant.append("****************** I'm the sender : ************************\n").append(sender.getMail()).append("\n");
+        messageCourant.append("****************** I'm the sender : ************************\n").append(sender).append("\n");
         messageCourant.append("****************** here is the list of my victims : ********\n");
         for (int i = 0; i < receivers.sizeOfVictims(); i++) {
-            messageCourant.append(receivers.getListeVictimes().get(i).getMail()).append("\n");
+            messageCourant.append(receivers.getListeVictimes().get(i)).append("\n");
         }
         System.out.println(messageCourant);
     }
+
+
+
 }

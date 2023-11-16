@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
 
         String pathVictimes = "src/main/resources/victims.txt";
-        List<String> victimes = LectureVictimes.lireListeVictimes(pathVictimes);
+        List<String> victimes = ReadFiles.lireListeVictimes(pathVictimes);
 
 //        // Afficher les victimes
 //        for (String victime : victimes) {
@@ -15,7 +15,7 @@ public class Main {
 //        }
 
         String pathMessagesJ = "src/main/resources/messagesJ.json"; // Assurez-vous que le chemin soit correct
-        List<Message> messagesJ = LectureVictimes.lireListeMessagesJSON(pathMessagesJ);
+        List<ReadFiles.Message> messagesJ = ReadFiles.lireListeMessagesJSON(pathMessagesJ);
 
 //        // Afficher les messages du file json
 //        for (int i = 0; i < messagesJ.size(); i++) {
@@ -23,7 +23,7 @@ public class Main {
 //        }
 
         String pathMessages = "src/main/resources/messages.txt";
-        List<String> messages = LectureVictimes.lireListeMessagesTXT(pathMessages);
+        List<String> messages = ReadFiles.lireListeMessagesTXT(pathMessages);
 
 //        // Afficher les messages du file txt
 //        for (int i = 0; i < messages.size(); i++) {

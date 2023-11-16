@@ -12,13 +12,39 @@ import org.json.JSONObject;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class LectureVictimes {
-
+public class ReadFiles {
     /**
      * Ce pattern permet de vérifier le format d'une adresse mail
      */
     public static final Pattern ADDRESSE_MAIL_VALIDE =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+
+    /**
+     * Cette classe est utilisée pour la lecture des fichiers JSON
+     */
+    public static class Message {
+        private final String subject;
+        private final String body;
+
+        public Message(String subject, String body) {
+            this.subject = subject;
+            this.body = body;
+        }
+
+        public String getSubject() {
+            return subject;
+        }
+
+        public String getBody() {
+            return body;
+        }
+
+        @Override
+        public String toString() {
+            return "Subject: " + subject + "\n" + "Body: " + body;
+        }
+    }
+
 
     /**
      * Fonction de vérification d'adresse mail

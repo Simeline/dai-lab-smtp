@@ -1,3 +1,6 @@
+/**
+ * Cette classe est utilisée pour la lecture des fichiers JSON
+ */
 public class Message {
     private final String subject;
     private final String body;

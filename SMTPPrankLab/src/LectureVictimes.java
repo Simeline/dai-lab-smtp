@@ -12,15 +12,30 @@ import java.util.regex.Pattern;
 
 public class LectureVictimes {
 
+    /**
+     * Ce pattern permet de vérifier le format d'une adresse mail
+     */
     public static final Pattern ADDRESSE_MAIL_VALIDE =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
+    /**
+     * Fonction de vérification d'adresse mail
+     * @param keyword email à vérifier
+     * @return si l'adresse est valide ou non
+     */
     public static boolean isEmailValid(String keyword) {
         Matcher match = ADDRESSE_MAIL_VALIDE.matcher(keyword);
         return match.find();
     }
 
+
     // static parce que c'est indépendant de la classe, on peut utiliser la fonction sans créer / instancier la classe
+
+    /**
+     * Fonction de lecture d'un fichier de messages txt
+     * @param path chemin jusqu'au fichier.txt
+     * @return une liste de toutes les messages d'un fichier séparés par "---"
+     */
     public static List<String> lireListeMessagesTXT(String path) {
 
         List<String> messages = new ArrayList<>();
@@ -49,6 +64,11 @@ public class LectureVictimes {
         return messages;
     }
 
+    /**
+     * Fonction de lecture d'un fichier de messages json
+     * @param path chemin jusqu'au fichier.json
+     * @return une liste de toutes les lignes du fichier
+     */
     public static List<Message> lireListeMessagesJSON(String path) {
         List<Message> messages = new ArrayList<>();
 
@@ -77,6 +97,11 @@ public class LectureVictimes {
         return messages;
     }
 
+    /**
+     * Fonction de lecture du fichier des adresses mails
+     * @param path chemin jusqu'au fichier.txt
+     * @return une liste de toutes les victimes
+     */
     public static List<String> lireListeVictimes(String path) {
 
         List<String> victimes = new ArrayList<>();

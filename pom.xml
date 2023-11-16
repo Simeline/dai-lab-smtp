@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>LectureVictimes</groupId>
-    <artifactId>demo-app</artifactId>
+    <artifactId>SMTP_Prank</artifactId>
     <version>1.0</version>
 
     <properties>
@@ -37,7 +37,6 @@
             <version>20210307</version> <!-- Ou une version plus récente si disponible -->
         </dependency>
     </dependencies>
-
 
 
 </project>

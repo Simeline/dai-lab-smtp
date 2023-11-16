@@ -1,3 +1,4 @@
+package ch.heig.dai_lab_smtp;
 
 public class Mail {
     private final String mail;

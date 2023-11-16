@@ -1,0 +1,20 @@
+{
+  "values": [
+    {
+      "sujet": "Annonce importante : théière géante",
+      "corps": "Cher collègue, Nous avons eu une situation assez inattendue ce matin. Notre serveur de café a subi une mise à jour inattendue et a décidé de se transformer en une immense théière. Si vous avez besoin de thé, vous êtes au bon endroit ! Nous travaillons sur le retour à la normale, mais en attendant, prenez une pause thé et profitez de la situation."
+    },
+    {
+      "sujet": "Réclamation du bureau hanté",
+      "corps": "Salut tout le monde, j'ai entendu des bruits étranges dans le bureau hier soir. Les fantômes ont-ils embauché des employés ?"
+    },
+    {
+      "sujet": "Appel à une réunion d'urgence : Pénurie de cookies",
+      "corps": "Bonjour à tous, nous avons une crise de pénurie de cookies dans la salle de pause. Une réunion d'urgence est prévue pour discuter de la situation. Apportez des cookies pour soutenir la cause !"
+    },
+    {
+      "sujet": "Enquête sur les stylos disparus",
+      "corps": "Chers collègues, une enquête est en cours pour retrouver nos stylos disparus. Si vous avez des informations, contactez l'inspecteur Bic !"
+    }
+  ]
+}

@@ -1,3 +1,5 @@
+package ch.heig.dai_lab_smtp;
+
 public class Prank {
     private final Mail sender;
     private final Group receivers;

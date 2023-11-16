@@ -1,3 +1,5 @@
+package ch.heig.dai_lab_smtp;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -14,7 +16,7 @@ public class Group {
      */
     public Group(int taille) {
         this.taille = taille;
-        String pathVictimes = "config/victims.txt";
+        String pathVictimes = "src/main/resources/victims.txt";
         List<String> victimes = LectureVictimes.lireListeVictimes(pathVictimes);
         Collections.shuffle(victimes);
         for (int i = 0; i < taille; i++) {

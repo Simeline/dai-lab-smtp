@@ -1,3 +1,5 @@
+package ch.heig.dai_lab_smtp;
+
 import java.io.*;
 import java.net.Socket;
 

@@ -1,10 +1,12 @@
+package ch.heig.dai_lab_smtp;
+
 import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        String pathVictimes = "config/victims.txt";
+        String pathVictimes = "src/main/resources/victims.txt";
         List<String> victimes = LectureVictimes.lireListeVictimes(pathVictimes);
 
 //        // Afficher les victimes
@@ -12,7 +14,7 @@ public class Main {
 //            System.out.println(victime);
 //        }
 
-        String pathMessagesJ = "config/messagesJ.json"; // Assurez-vous que le chemin soit correct
+        String pathMessagesJ = "src/main/resources/messagesJ.json"; // Assurez-vous que le chemin soit correct
         List<Message> messagesJ = LectureVictimes.lireListeMessagesJSON(pathMessagesJ);
 
 //        // Afficher les messages du file json
@@ -20,7 +22,7 @@ public class Main {
 //            System.out.println((i + 1) + ")\n" + messagesJ.get(i) + "\n");
 //        }
 
-        String pathMessages = "config/messages.txt";
+        String pathMessages = "src/main/resources/messages.txt";
         List<String> messages = LectureVictimes.lireListeMessagesTXT(pathMessages);
 
 //        // Afficher les messages du file txt

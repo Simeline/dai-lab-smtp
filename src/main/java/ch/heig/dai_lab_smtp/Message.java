@@ -1,3 +1,5 @@
+package ch.heig.dai_lab_smtp;
+
 /**
  * Cette classe est utilisée pour la lecture des fichiers JSON
  */

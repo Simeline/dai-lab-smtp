@@ -1,77 +1,73 @@
-DAI lab: SMTP
-=============
+# Rapport laboratoire n°4 - SMTP
 
-Objectives
-----------
+# Introduction
+L'objectif de ce laboratoire est de mettre en place un client SMTP qui envoie des pranks à une liste de victimes.
+L'utilisateur doit fournir une liste de victimes et une liste de messages à envoyer.
 
-In this lab, you will develop a TCP client application in Java. This client application will use the Socket API to communicate with an SMTP server. The code that you write will include a **partial implementation of the SMTP protocol**. 
-
-These are the objectives of the lab:
-
-* Implement a more complex TCP client application in Java, which uses the Socket API to communicate with an SMTP server.
-* Make practical experiments to become familiar with the **SMTP protocol**. After the lab, you should be able to use a command line tool to communicate with an SMTP server. You should be able to send well-formed messages to the server, in order to send emails to the address of your choice.
-* Design a simple object-oriented model to implement the functional requirements described in the next paragraph.
-
-
-Functional requirements
------------------------
-
-Your mission is to develop a client application that automatically plays e-mail pranks on a list of victims:
-
-* As configuration, the user of your program should provide
-  1. the **victims list**: a file with a list of e-mail addresses,
-  2. the **messages list**: a file with several e-mail messages (subject and body),
-  3. the **number of groups** `n` on which the e-mail prank is played. This can be provided e.g., as a command line argument.
-* Your program should form `n` groups by selecting 2-5 e-mail addresses from the file for each group. The first address of the group is the sender, the others are the receivers (victims).
-* For each group, your program should select one of the e-mail messages. 
-* The respective messages are then sent to the diffent groups using the SMTP protocol.
-
-Constraints
------------
-
-* Your client must be implemented in Java, with the `java.io` API.
-* The goal is for you to work at the wire protocol level (with the Socket API). Therefore, you CANNOT use a library that takes care of the protocol details. You have to work with the input and output streams.
-* The program must be configurable: the addresses, groups, messages CANNOT be hard-coded in the program and MUST be managed in config files.
-* You must send **one** e-mail per group, and not one e-mail for every member of every group.
-* There must be at least a simple validation process of the input files that displays errors on the console to describe what's wrong (e.g. an invalid number of groups, an invalid e-mail address that does not contain a '@' character, an invalid format, etc.).
-* The subject and body of the messages may contain non-ASCII characters. You have to encode the body and the subject of the e-mail correctly. You can find more information [here](https://ncona.com/2011/06/using-utf-8-characters-on-an-e-mail-subject/).
-
-
-Example
--------
-
-Consider that your program generates a group G1. The group sender is Bob. The group recipients are Alice, Claire and Peter. When the prank is played on group G1, then your program should pick one of the fake messages. It should communicate with an SMTP server, so that Alice, Claire and Peter receive an e-mail, which appears to be sent by Bob.
-
-SMTP server
------------
-
-You can use [MailDev](https://github.com/maildev/maildev) as a mock SMTP server for your tests.  **Do not use a real SMTP server**.
-
-Use docker to start the server:
-
+Pour tester que les messages SMTP sont correctement envoyés, nous avons mis en place un serveur Mock SMTP.
+Ce serveur a été déployé en utilisant l'outil Docker. Pour le lancer, il faut exécuter, dans le terminal, la commande :  
+    
     docker run -d -p 1080:1080 -p 1025:1025 maildev/maildev
 
-This provides a Web interface on localhost:1080 and a SMTP server on localhost:1025.
+Puis il suffit de lancer l'URL suivant pour visualiser le serveur Mock SMTP sur l'interface web : 
 
-Deliverables
-------------
+    http://localhost:1080
 
-You will deliver the results of your lab in a GitHub repository. You do not have to fork a specific repo, you can create one from scratch.
+# MailDev
+## Description
+[MailDev](https://github.com/maildev/maildev) est un serveur de simulation qui appartient à la catégorie des outils permettant de reproduire 
+le comportement d'un vrai service SMTP. Cette approche évite de surcharger un serveur SMTP en production, 
+ce qui pourrait entraîner des problèmes de blacklistage.
 
-Your repository should contain both the source code of your Java project and your report. Your report should be a single `README.md` file, located at the root of your repository. The images should be placed in a `figures` directory.
+# Client SMTP
+## Configuration
+Le client SMTP se configure en deux étapes :
+- Etablir la liste de victimes et la liste de messages
+- Déterminer la taille d'un groupe et le nombre de groupes
 
-Your report MUST include the following sections:
+### Etablir la liste de victimes et la liste de messages
+Les adresses mails des victimes sont placées dans le fichier [victims](src/main/resources/victims.txt), 
+chacune étant soumise à une validation par un motif spécifique.
 
-* **A brief description of your project**: if people exploring GitHub find your repo, without a prior knowledge of the API course, they should be able to understand what your repo is all about and whether they should look at it more closely.
+Un message est composé d'un sujet et d'un corps de message. 
 
-* **Instructions for setting up your mock SMTP server**. The user who wants to experiment with your tool but does not really want to send pranks immediately should be able to use a mock SMTP server.
+Les messages peuvent être lus sous le format .txt mais doivent être séparés par "---" ou bien peuvent être lus sous le format .json.
+Il faut placer les messages dans [messages](src/main/resources).
 
-* **Clear and simple instructions for configuring your tool and running a prank campaign**. If you do a good job, an external user should be able to clone your repo, edit a couple of files and send a batch of e-mails in less than 10 minutes.
+### Déterminer la taille d'un groupe et le nombre de groupes
 
-* **A description of your implementation**: document the key aspects of your code. It is a good idea to start with a **class diagram**. Decide which classes you want to show (focus on the important ones) and describe their responsibilities in text. It is also certainly a good idea to include examples of dialogues between your client and an SMTP server (maybe you also want to include some screenshots here).
+Dans la classe Main, il faut insérer le nombre de groupes souhaités ainsi que leur taille.
+Ces informations détermineront le nombre de victimes du Prank.
 
-References
-----------
+## Utilisation
 
-* The [SMTP RFC](<https://tools.ietf.org/html/rfc5321#appendix-D>), and in particular the [example scenario](<https://tools.ietf.org/html/rfc5321#appendix-D>)
-* The [mailtrap](<https://mailtrap.io/>) online service for testing SMTP
+Une fois toutes les configurations réalisées, il ne vous reste plus qu'à lancer le programme. 
+Pour réaliser cette étape, il faut se rendre dans le dossier qui contient l'exécutable, 
+c'est-à-dire le dossier [Main](src/main/java/ch/heig/dai_lab_smtp/Main.java) et lancer le programme rédigé en Java via un IDE tel qu'IntelliJ IDEA.
+
+## Implémentation
+
+Pour comprendre la présente implémentation, vous pouvez déchiffre le diagramme UML suivant.
+![Diagramme UML](figures/Diagramme.png)
+
+On peut séparer notre code en 5 parties :
+- **Main** : cette section représente le thread principal
+- **ReadFiles** : qui s'occupe de récupérer les informations des resources
+- **Group** : qui fabrique des groupes aléatoires à partir des données récoltées ci-dessus
+- **Prank** : qui s'occupe de séparer l'expéditeur des destinataires au sein d'un groupe
+- **SMTPCLient** : qui est l'élément central de notre code. Il expédie, via un socket, un message aux différents acteurs d'un même groupe
+
+## Exemple d'échange
+Cette partie représente un échange entre un client et un serveur lors de l'envoi d'un mail.
+
+    Réponse du serveur : 220 1e19ce8517f9 ESMTP
+    
+    Réponse du serveur : 250-1e19ce8517f9 Nice to meet you, [192.168.65.1]
+    
+    Réponse du serveur : 250-PIPELINING
+    
+    Réponse du serveur : 250-8BITMIME
+    
+    Réponse du serveur : 250 SMTPUTF8
+    
+    Réponse du serveur : 250 Accepted

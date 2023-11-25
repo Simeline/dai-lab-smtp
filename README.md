@@ -48,7 +48,7 @@ c'est-à-dire le dossier [Main](src/main/java/ch/heig/dai_lab_smtp/Main.java) et
 ## Implémentation
 
 Pour comprendre la présente implémentation, vous pouvez déchiffre le diagramme UML suivant.
-![Diagramme UML](figures/Diagramme.png)
+![Diagramme UML](src/main/figures/Diagramme.png)
 
 On peut séparer notre code en 5 parties :
 - **Main** : cette section représente le thread principal
@@ -60,11 +60,25 @@ On peut séparer notre code en 5 parties :
 ## Exemple d'échange
 Cette partie représente les messages du serveur suite à l'envoi d'un mail par le client.
 
+    (C): Connexion au serveur 
     (S): 220 1e19ce8517f9 ESMTP
+    (C): EHLO localhost
     (S): 250-PIPELINING
     (S): 250-8BITMIME
     (S): 250 SMTPUTF8
+    (C): MAIL FROM <adresse expéditeur>
     (S): 250 Accepted
+    (C): RCPT TO <adresse d'un destinataire> 
     (S): 250 Accepted
+    (C): RCPT TO <adresse d'un destinataire> 
     (S): 250 Accepted
+    (C): DATA
     (S): 354 End data with <CR><LF>.<CR><LF>
+    (C): sujet
+    (C): ligne vide
+    (C): body
+    (C): "\r\n.\r\n"
+    (C): QUIT
+
+
+

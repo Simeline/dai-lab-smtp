@@ -65,7 +65,7 @@ public class ReadFiles {
      * @param path chemin jusqu'au fichier.txt
      * @return une liste de toutes les messages d'un fichier séparés par "---"
      */
-    public static List<String> lireListeMessagesTXT(String path) {
+    public static List<String> lireListeMessagesTXT(String path, boolean shuffle) {
 
         List<String> messages = new ArrayList<>();
         StringBuilder messageCourant = new StringBuilder();
@@ -89,6 +89,9 @@ public class ReadFiles {
         catch (IOException e) {
             e.printStackTrace();
         }
+
+        if(shuffle)
+            Collections.shuffle(messages);
 
         return messages;
     }

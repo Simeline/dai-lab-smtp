@@ -1,8 +1,10 @@
 package ch.heig.dai_lab_smtp;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+
+import static ch.heig.dai_lab_smtp.Config.*;
+
 
 public class Group {
     private final List<String> listeVictimes = new ArrayList<>();
@@ -16,16 +18,15 @@ public class Group {
      */
     public Group(int taille) {
         this.taille = taille;
-        String pathVictimes = "src/main/resources/victims.txt";
-        List<String> victimes = ReadFiles.lireListeVictimes(pathVictimes);
-        Collections.shuffle(victimes);
+        List<String> victimes = ReadFiles.lireListeVictimes(FILE_VICTIMES, true);
+
         for (int i = 0; i < taille; i++) {
             listeVictimes.add(victimes.get(i));
         }
     }
 
     /**
-     *     Constructeur par défaut qui met une taille à 4
+     *     Constructeur par défaut qui met une taille à 5
      */
     public Group() {
         this(5); // Appelle le constructeur avec un argument

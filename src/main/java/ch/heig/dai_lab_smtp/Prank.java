@@ -17,6 +17,10 @@ public class Prank {
         receivers.getListeVictimes().remove(0);
     }
 
+    String getSender() {
+        return sender;
+    }
+
     /**
      * Affichage des deux catégories d'un groupe
      */

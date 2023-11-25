@@ -3,22 +3,23 @@ package ch.heig.dai_lab_smtp;
 import java.io.*;
 import java.net.Socket;
 
+// il faut exécuter dans le terminal la commande : docker run -d -p 1080:1080 -p 1025:1025 maildev/maildev
+// http://localhost:1080/#/ --> on pourra lire sur ce site les messages
 public class SMTPClient {
+    Prank groupe;
     public static void main(String[] args) {
 
-        try {
-            // il faut exécuter dans le terminal la commande : docker run -d -p 1080:1080 -p 1025:1025 maildev/maildev
-            // http://localhost:1080/#/ --> on pourra lire sur ce site les messages
-            Socket socket = new Socket("localhost", 1025);
-            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+        try (     Socket socket = new Socket("localhost", 1025);
+                  BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                  PrintWriter out = new PrintWriter(socket.getOutputStream(), true))
+        {
 
             // Lire la réponse
             String response = in.readLine();
             System.out.println("Réponse du serveur : " + response + "\n");
 
             // Étape 1 : Se connecter au serveur SMTP
-            out.println("HELO localhost");
+            out.println("EHLO localhost");
 
             // Lire la réponse
             response = in.readLine();
@@ -27,6 +28,7 @@ public class SMTPClient {
             //************************************************************************* EXEMPLE D'ECRITURE
             // Étape 2 : Envoyer l'e-mail
             out.println("MAIL FROM: <valentin.bugna@heig-vd.ch>");
+            //out.println("MAIL FROM: <" + groupe.getSender() + ">");
             response = in.readLine();
             System.out.println("Réponse du serveur : " + response + "\n");
 
@@ -50,11 +52,6 @@ public class SMTPClient {
             System.out.println("Réponse du serveur : " + response + "\n");
 
             //*************************************************************************
-
-            // Fermer les flux et le socket
-            in.close();
-            out.close();
-            socket.close();
 
         } catch (IOException e) {
             e.printStackTrace();

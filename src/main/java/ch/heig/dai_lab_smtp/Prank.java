@@ -5,57 +5,101 @@ import java.util.Collections;
 import java.util.List;
 
 public class Prank {
-    private final String fileVictims;
-    private final String fileMessages;
-
+    private final List<String> victimes;
+    private final List<ReadFiles.Message> messages;
     private final int numberPersonPerGroup;
+
     private String sender;
-    private List<String> receivers = new ArrayList<>();
+    private final List<String> receivers;
     private ReadFiles.Message message;
     private String subject;
+    private String body;
 
+
+    /**
+     * Constructeur qui par défaut crée un groupe de 5
+     * @param fileVictims fichiers des victimes
+     * @param fileMessages fichiers des messages
+     */
     public Prank(String fileVictims, String fileMessages) {
         this(fileVictims, fileMessages, 5);
     }
 
+    /**
+     * Constructeur qui annonce la taille du groupe
+     * @param fileVictims fichiers des victimes
+     * @param fileMessages fichiers des messages
+     * @param groupSize taille du groupe
+     */
     public Prank(String fileVictims, String fileMessages, int groupSize) {
-        this.fileVictims = fileVictims;
-        this.fileMessages = fileMessages;
+
+        // Get the sender and receivers
+        this.victimes = ReadFiles.lireListeVictimes(fileVictims, true);;
+        // Get the message
+        messages = ReadFiles.lireListeMessagesJSON(fileMessages, true);
+        // Get the size of the group
         this.numberPersonPerGroup = groupSize;
+
+        this.sender = null;
+        this.receivers = new ArrayList<>();
+        this.message = null;
+        this.body = null;
+        this.subject = null;
     }
 
+    /**
+     * Getter
+     * @return l'expéditeur
+     */
     public String getSender(){
         return this.sender;
     }
 
+    /**
+     * Getter
+     * @return liste des destinataires
+     */
     public List<String> getReceivers(){
         return this.receivers;
     }
 
-    public String getMessageSubject(){
-        return this.message.getSubject();
-    }
-    public String getMessageBody(){
-        return this.message.getBody();
-    }
+    /**
+     * Getter
+     * @return un type Message qui comprend le corps et le sujet du message
+     */
     public ReadFiles.Message getMessage(){
         return this.message;
     }
 
+    public String getSubject() {
+        return this.subject;
+    }
+
+    public String getBody() {
+        return this.body;
+    }
+
+    /**
+     * Pour l'instant, on crée un seul groupe dans cette fonction...
+     */
     public void generateNewPrank(){ // TODO : Improve by storing full list so we don't need to read file multiple times ?
+
         // Clear the receivers list
         this.receivers.clear();
 
-        // Get the sender and receivers
-        List<String> victimes = ReadFiles.lireListeVictimes(fileVictims, true);
-        int i;
-        for (i = 0; i < this.numberPersonPerGroup -1; i++) {
-            this.receivers.add(victimes.get(i));
-        }
-        this.sender = victimes.get(i);
+        // Random mixing of list elements.
+        Collections.shuffle(messages);
+        Collections.shuffle(victimes);
 
-        // Get the message
-        List<ReadFiles.Message> messages = ReadFiles.lireListeMessagesJSON(fileMessages, true);
-        this.message = messages.getFirst();
+        int i = 0;
+        this.sender = victimes.get(i);
+        for (i = 1; i < this.numberPersonPerGroup; i++) {
+            this.receivers.add(victimes.get(i));
+            System.out.println(victimes.get(i));
+        }
+
+        this.message = messages.get(0);
+        this.body = message.getBody();
+        this.subject = message.getSubject();
     }
 }

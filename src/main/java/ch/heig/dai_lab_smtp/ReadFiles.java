@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -97,7 +98,7 @@ public class ReadFiles {
      * @param path chemin jusqu'au fichier.json
      * @return une liste de toutes les lignes du fichier
      */
-    public static List<Message> lireListeMessagesJSON(String path) {
+    public static List<Message> lireListeMessagesJSON(String path, boolean shuffle) {
         List<Message> messages = new ArrayList<>();
 
         try (var reader = new BufferedReader(new FileReader(path))) {
@@ -122,6 +123,9 @@ public class ReadFiles {
             e.printStackTrace();
         }
 
+        if(shuffle)
+            Collections.shuffle(messages);
+
         return messages;
     }
 
@@ -130,7 +134,7 @@ public class ReadFiles {
      * @param path chemin jusqu'au fichier.txt
      * @return une liste de toutes les victimes
      */
-    public static List<String> lireListeVictimes(String path) {
+    public static List<String> lireListeVictimes(String path, boolean shuffle) {
 
         List<String> victimes = new ArrayList<>();
 
@@ -149,6 +153,9 @@ public class ReadFiles {
             e.printStackTrace();
         }
 
-        return victimes;
+        if(shuffle)
+            Collections.shuffle(victimes);
+
+        return  victimes;
     }
 }

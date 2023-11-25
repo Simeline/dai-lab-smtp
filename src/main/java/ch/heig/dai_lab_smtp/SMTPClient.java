@@ -2,62 +2,55 @@ package ch.heig.dai_lab_smtp;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.List;
 
 public class SMTPClient {
-    public static void main(String[] args) {
+    public void run(String subject, String message, String sender, List<String> receivers) {
 
-        try {
-            // il faut exécuter dans le terminal la commande : docker run -d -p 1080:1080 -p 1025:1025 maildev/maildev
-            // http://localhost:1080/#/ --> on pourra lire sur ce site les messages
-            Socket socket = new Socket("localhost", 1025);
+        // il faut exécuter dans le terminal la commande : docker run -d -p 1080:1080 -p 1025:1025 maildev/maildev
+        // http://localhost:1080/#/ --> on pourra lire sur ce site les messages
+        try(Socket socket = new Socket("localhost", 1025);
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);) {
 
-            // Lire la réponse
+            // Wait server first message
             String response = in.readLine();
-            System.out.println("Réponse du serveur : " + response + "\n");
+            System.out.println("Réponse du serveur : " + response + "\n");  // TODO : check code and Remove
 
-            // Étape 1 : Se connecter au serveur SMTP
-            out.println("HELO localhost");
-
-            // Lire la réponse
+            // Connect to the SMTP Server
+            out.println("EHLO localhost");
             response = in.readLine();
-            System.out.println("Réponse du serveur : " + response + "\n");
+            System.out.println("Réponse du serveur : " + response + "\n"); // TODO : check code and Remove
 
-            //************************************************************************* EXEMPLE D'ECRITURE
-            // Étape 2 : Envoyer l'e-mail
-            out.println("MAIL FROM: <valentin.bugna@heig-vd.ch>");
+            // Send the email
+            out.println("MAIL FROM: <" + sender + ">");
             response = in.readLine();
-            System.out.println("Réponse du serveur : " + response + "\n");
+            System.out.println("Réponse du serveur : " + response + "\n"); // TODO : check code and Remove
 
-            out.println("RCPT TO: <valentin.bugna@heig-vd.ch>");
-            response = in.readLine();
-            System.out.println("Réponse du serveur : " + response + "\n");
+            for (String mail : receivers) {
+                out.println("RCPT TO: <"+ mail +">");
+                response = in.readLine();
+                System.out.println("Réponse du serveur : " + response + "\n"); // TODO : check code and Remove
+            }
 
             out.println("DATA");
             response = in.readLine();
-            System.out.println("Réponse du serveur : " + response + "\n");
-
-            // Envoyer l'en-tête et le corps du message
-            out.println("Subject: Votre sujet ");
-            out.println("From: <valentin.bugna@heig-vd.ch>");
-            out.println("To: <valentin.bugna@heig-vd.ch>");
+            System.out.println("Réponse du serveur : " + response + "\n"); // TODO : check code and Remove
+            out.println("Subject: " + subject);
+            out.println("From: <" + sender + ">");
             out.println("Content-Type: text/plain; charset=UTF-8");
             out.println();
-            out.println("Corps de votre e-mail ici.");
+            out.println(message);
             out.println("\r\n.\r\n");
             response = in.readLine();
-            System.out.println("Réponse du serveur : " + response + "\n");
+            System.out.println("Réponse du serveur : " + response + "\n"); // TODO : check code and Remove
 
-            //*************************************************************************
-
-            // Fermer les flux et le socket
-            in.close();
-            out.close();
-            socket.close();
+            // TODO : Fermer avec un QUIT
+            out.println("QUIT");
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 }

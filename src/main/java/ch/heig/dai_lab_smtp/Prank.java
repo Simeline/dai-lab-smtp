@@ -3,6 +3,7 @@ package ch.heig.dai_lab_smtp;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class Prank {
     private final List<String> victimes;
@@ -14,6 +15,7 @@ public class Prank {
     private ReadFiles.Message message;
     private String subject;
     private String body;
+    private static final Random random = new Random();
 
 
     /**
@@ -88,17 +90,15 @@ public class Prank {
         this.receivers.clear();
 
         // Random mixing of list elements.
-        Collections.shuffle(messages);
         Collections.shuffle(victimes);
 
         int i = 0;
         this.sender = victimes.get(i);
         for (i = 1; i < this.numberPersonPerGroup; i++) {
             this.receivers.add(victimes.get(i));
-            System.out.println(victimes.get(i));
         }
 
-        this.message = messages.get(0);
+        this.message = messages.get(random.nextInt(messages.size()));
         this.body = message.getBody();
         this.subject = message.getSubject();
     }

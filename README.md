@@ -58,16 +58,13 @@ On peut séparer notre code en 5 parties :
 - **SMTPCLient** : qui est l'élément central de notre code. Il expédie, via un socket, un message aux différents acteurs d'un même groupe
 
 ## Exemple d'échange
-Cette partie représente un échange entre un client et un serveur lors de l'envoi d'un mail.
+Cette partie représente les messages du serveur suite à l'envoi d'un mail par le client.
 
-    Réponse du serveur : 220 1e19ce8517f9 ESMTP
-    
-    Réponse du serveur : 250-1e19ce8517f9 Nice to meet you, [192.168.65.1]
-    
-    Réponse du serveur : 250-PIPELINING
-    
-    Réponse du serveur : 250-8BITMIME
-    
-    Réponse du serveur : 250 SMTPUTF8
-    
-    Réponse du serveur : 250 Accepted
+    (S): 220 1e19ce8517f9 ESMTP
+    (S): 250-PIPELINING
+    (S): 250-8BITMIME
+    (S): 250 SMTPUTF8
+    (S): 250 Accepted
+    (S): 250 Accepted
+    (S): 250 Accepted
+    (S): 354 End data with <CR><LF>.<CR><LF>

@@ -11,8 +11,8 @@ public class Main {
         Prank prank = new Prank(FILE_VICTIMES, FILE_MESSAGES, nbPersonPerGroups);
 
         for (int i = 0; i < nbGroups; i++) {
-            //prank.generateNewPrank();
-            //client.run(prank.getMessage().getSubject(), prank.getMessage().getBody(), prank.getSender(), prank.getReceivers());
+            prank.generateNewPrank();
+            client.sendMessage(prank.getSubject(), prank.getBody(), prank.getSender(), prank.getReceivers());
         }
     }
 }

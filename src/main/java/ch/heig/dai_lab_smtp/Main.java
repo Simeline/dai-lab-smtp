@@ -9,7 +9,7 @@ public class Main {
 
         // Check the number of groups
         if(nbGroups < 1){
-            System.err.println("ERREUR avec le nombre de groupes.");
+            System.err.println("ERREUR : Nombre de groupes invalide. Doit être suppérieur à 1.");
             return;
         }
 

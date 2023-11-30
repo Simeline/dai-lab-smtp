@@ -31,20 +31,23 @@ public class Prank {
      * @param groupSize taille du groupe
      */
     public Prank(String fileVictims, String fileMessages, int groupSize) {
-
-
-
         // Get the sender and receivers
         this.victimes = ReadFiles.lireListeVictimes(fileVictims, true);
         // Get the message
-        messages = ReadFiles.lireListeMessagesJSON(fileMessages, true);
-        // Get the size of the group. If the size is invalid, get a random
+        this.messages = ReadFiles.lireListeMessagesJSON(fileMessages, true);
+        // Get the size of the group, if valid
         if(groupSize < 2 || groupSize > 5)
         {
-            System.err.println("ERREUR avec la taille du groupe");
+            System.err.println("ERREUR : Taille du groupe invalide. Doit appartenir à l'intervalle [2;5].");
             System.exit(1);
         }
         this.numberPersonPerGroup = groupSize;
+
+        // Check there is enough emails
+        if(this.victimes.size() < this.numberPersonPerGroup){
+            System.err.println("ERREUR : Nombre d'e-mails insuffisants dans le fichier.");
+            System.exit(1);
+        }
 
         this.sender = null;
         this.receivers = new ArrayList<>();

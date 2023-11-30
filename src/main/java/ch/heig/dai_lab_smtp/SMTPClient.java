@@ -62,12 +62,14 @@ public class SMTPClient {
             readFromServer();
 
             writeToServer("Content-Type: text/plain; charset=UTF-8");
-            writeToServer("Content-Transfer-Encoding: base64"); // obligatoire pour pouvoir lire le "é" de réponse
             writeToServer("Subject: " + subject);
             writeToServer("From: <" + sender + ">");
 
             writeToServer(""); // obligatoire pour lire le body
-            writeToServer(Base64.getEncoder().encodeToString(message.getBytes(StandardCharsets.UTF_8))); // body
+            var split = message.split("\\\\n"); // Permet de traiter les retour à la ligne
+            for (String s : split) {
+                writeToServer(s + "\r\n");
+            }
 
             writeToServer("\r\n.\r\n"); // signifie la fin du body
             writeToServer("QUIT");

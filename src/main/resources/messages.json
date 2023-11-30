@@ -1,20 +1,30 @@
-{
-  "values": [
-    {
-      "sujet": "Annonce importante : théière géante",
-      "corps": "Cher collègue, Nous avons eu une situation assez inattendue ce matin. Notre serveur de café a subi une mise à jour inattendue et a décidé de se transformer en une immense théière. Si vous avez besoin de thé, vous êtes au bon endroit ! Nous travaillons sur le retour à la normale, mais en attendant, prenez une pause thé et profitez de la situation."
-    },
-    {
-      "sujet": "Réclamation du bureau hanté",
-      "corps": "Salut tout le monde, j'ai entendu des bruits étranges dans le bureau hier soir. Les fantômes ont-ils embauché des employés ?"
-    },
-    {
-      "sujet": "Appel à une réunion d'urgence : Pénurie de cookies",
-      "corps": "Bonjour à tous, nous avons une crise de pénurie de cookies dans la salle de pause. Une réunion d'urgence est prévue pour discuter de la situation. Apportez des cookies pour soutenir la cause !"
-    },
-    {
-      "sujet": "Enquête sur les stylos disparus",
-      "corps": "Chers collègues, une enquête est en cours pour retrouver nos stylos disparus. Si vous avez des informations, contactez l'inspecteur Bic !"
-    }
-  ]
-}
+[
+  {
+    "Subject": "Un océan d'amour dans chaque octet",
+    "Body": "Mon cher,\n\nChaque octet de mon cœur est inondé d'un océan d'amour pour toi. Chaque bit et chaque byte dansent au rythme de nos souvenirs partagés, créant une symphonie d'émotions indescriptible. Nos conversations sont comme des échanges de données infinies, et chaque émoji est une expression de nos sentiments profonds.\n\nComme un e-mail bien rédigé, notre amour est structuré avec soin, chaque paragraphe rempli de tendresse, chaque mot chargé d'affection. Tu es le destinataire exclusif de mon âme et de mon cœur, et chaque ligne de code de mon être est consacrée à te rendre heureux(se).\n\nReste connecté à mon amour infini, car notre réseau d'affection est sans limites. Tu es ma source d'inspiration, mon fichier source d'amour infini.\n\nAvec tout mon amour"
+  },
+  {
+    "Subject": "Un téléchargement sans fin de bonheur",
+    "Body": "Mon amour,\n\nMon cœur est comme un fichier compressé, rempli de moments précieux que nous avons partagés. À chaque ouverture, il se décompresse pour révéler un flot ininterrompu de bonheur, de tendresse et d'amour pour toi. Chaque souvenir est encodé dans mon esprit, prêt à être décompressé à tout moment.\n\nNotre connexion est comme un téléchargement sans fin de joie, avec une vitesse constante de bonheur. Chaque instant passé ensemble est un pixel dans le portrait magnifique de notre histoire d'amour. Et je suis reconnaissant pour chaque pixel, car ils forment une image parfaite de notre relation.\n\nQue notre lien persiste comme un téléchargement permanent, un flux continu d'affection et de moments inoubliables.\n\nToujours à toi"
+  },
+  {
+    "Subject": "Changement de statut",
+    "Body": "Bonjour mon cher ami,\n\nComme toute session, notre connexion touche à sa fin. Nous avons partagé de nombreux fichiers d'amour, mais il semble que nos données émotionnelles ne soient plus compatibles. Les pings de nos cœurs semblent rencontrer des délais de plus en plus longs, et il est temps pour nous de mettre fin à notre session commune.\n\nNos chemins divergent maintenant, et il est difficile de maintenir cette connexion avec la même intensité. Parfois, les paquets d'amour ne parviennent tout simplement plus à atteindre leur destination, et il est préférable de déconnecter nos cœurs pour éviter toute erreur inattendue.\n\nJe te remercie pour chaque instant partagé, mais il est temps pour nous de mettre fin à cette connexion."
+  },
+  {
+    "Subject": "Fin de compilation",
+    "Body": "Comme tout programme,\n\n notre relation a atteint la fin de sa compilation. Malgré tous nos efforts pour optimiser notre code d'amour, nous avons réalisé que nos chemins ne se synchronisent plus comme avant. Nos commits précédents ne suffisent plus à maintenir une connexion stable entre nous.\n\nNos cœurs semblent rencontrer des conflits inexplicables, et nos versions semblent s'éloigner progressivement. Chaque test de notre relation aboutit à des erreurs inattendues, et il est temps pour nous d'arrêter l'exécution de notre histoire commune.\n\nIl est difficile de mettre fin à ce programme, mais parfois, la meilleure décision est de fermer l'application. Je te souhaite le meilleur pour tes prochaines mises à jour de bonheur.\n\nRespectueusement, ton ancien compilateur."
+  },
+  {
+    "Subject": "Tu es mon langage de programmation préféré",
+    "Body": "Mon amour,\n\nTu es mon langage de programmation préféré dans ce monde chaotique de données et de technologie. Chaque ligne de code que nous écrivons ensemble crée une expérience incroyablement belle et fonctionnelle. Tu es le framework de mon bonheur, l'API de mon affection.\n\nNotre relation est comme un script bien structuré, avec des fonctions d'amour parfaitement définies et des variables de bonheur sans fin. Chaque bug dans notre relation est rapidement corrigé, transformant ainsi notre histoire en un logiciel stable et résistant aux erreurs.\n\nReste mon langage de programmation préféré, ensemble, nous créerons un logiciel d'amour parfait.\n\nToujours avec toi"
+  },
+  {
+    "Subject": "Pour notre amitié sans faille",
+    "Body": "Salut,\n\nJe voulais juste prendre un moment pour te dire à quel point notre amitié compte pour moi. Tu es comme le code source de ma vie, apportant de la joie, de la stabilité et une tonne de rires. Nos moments partagés sont comme des fonctions bien définies : ils rendent ma vie beaucoup plus facile et plus amusante.\n\nChaque fois que je pense à notre amitié, je me rends compte à quel point tu es une constante précieuse dans ma vie. Tu es le point virgule à mes phrases, la virgule à mes listes de moments heureux et le point d'exclamation à mes jours ordinaires.\n\nMerci d'être toujours là pour moi, même dans les moments les plus turbulents. J'apprécie chaque ligne de code que nous avons écrite ensemble dans le grand livre de notre amitié.\n\nÀ toutes nos aventures passées et à venir !"
+  },
+  {
+    "Subject": "Une soirée spéciale avec toi ?",
+    "Body": "Cher ami,\n\n J'espère que cette journée t'a apporté autant de sourires que tu apportes à la mienne. J'aimerais beaucoup partager un moment privilégié avec toi pour discuter, rire et simplement profiter de ta présence.\n\nJe pense qu'une soirée ensemble autour d'un dîner serait merveilleuse. Que dirais-tu de passer du temps dans ce nouveau restaurant italien que tout le monde recommande ? J'ai entendu dire qu'ils ont les meilleurs plats de pâtes en ville !\n\nJe suis flexible avec les jours, donc choisis celui qui te convient le mieux. Si tu es partante, je suis ravi de t'offrir une soirée inoubliable. J'attends avec impatience de partager des conversations fascinantes et des moments doux avec toi.\n\nFais-moi savoir si cela te convient, et nous organiserons les détails ensemble. J'ai hâte de passer ce moment ensemble."
+  }
+]

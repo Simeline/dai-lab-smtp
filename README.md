@@ -22,8 +22,8 @@ ce qui pourrait entraîner des problèmes de blacklistage.
 # Client SMTP
 ## Configuration
 Le client SMTP se configure en deux étapes :
-- Etablir la liste de victimes et la liste de messages et les placer dans le répertoires "resources"
-- Déterminer la taille d'un groupe et le nombre de groupes dans le fichier de "Configuration"
+- Etablir la liste de victimes et la liste de messages et les placer dans le répertoire "resources"
+- Déterminer la taille d'un groupe et le nombre de groupes dans le fichier de [Configuration](src/main/java/ch/heig/dai_lab_smtp/Configuration.java)
 
 ### Etablir la liste de victimes et la liste de messages
 Les adresses mails des victimes sont placées dans le fichier [victims](src/main/resources/victims.txt), 
@@ -32,28 +32,30 @@ chacune étant soumise à une validation par un motif spécifique.
 Un message est composé d'un sujet et d'un corps de message. 
 
 Les messages peuvent être lus sous le format .txt mais doivent être séparés par "---" ou bien ils peuvent être lus sous le format .json.
-De plus, il faut placer les messages dans [messages](src/main/resources).
+De plus, il faut placer les messages dans le rérpertoire [resources](src/main/resources).
 
 ### Déterminer la taille d'un groupe et le nombre de groupes
 
-Dans la classe Configuration, il faut insérer le nombre de groupes souhaités ainsi que leur taille.
+Dans la classe Configuration, il faut insérer le nombre de groupes souhaité ainsi que leur taille.
 Ces informations détermineront le nombre de victimes du Prank.
 
-D'autres informations, telles que le numéros de port ou les chemins absolus peuvent être modifiées dans ce même fichier.
+D'autres informations, telles que le numéro de port ou les chemins absolus peuvent être également modifiées dans ce même fichier.
 
 ## Utilisation
 
 Une fois toutes les configurations réalisées, il ne vous reste plus qu'à lancer le programme Main.
-Pour réaliser cette étape, il faut se rendre dans le dossier qui contient l'exécutable, 
+Pour réaliser cette étape, vous devez vous rendre dans le dossier qui contient l'exécutable, 
 c'est-à-dire le dossier [Main](src/main/java/ch/heig/dai_lab_smtp/Main.java) et lancer le programme.
+
 A titre informatif, le code a été rédigé en Java via un IDE tel qu'IntelliJ IDEA.
 
 ## Implémentation
 
 Pour comprendre la présente implémentation, vous pouvez déchiffrer le diagramme UML suivant.
+
 ![Diagramme UML](src/main/figures/Diagramme.png)
 
-notre code se décompose en 4 parties :
+Le code se décompose en 4 parties :
 - **Main** : cette section représente le thread principal
 - **ReadFiles** : classe qui s'occupe de récupérer les informations des resources
 - **Prank** : classe qui s'occupe de séparer l'expéditeur des destinataires au sein d'un groupe et d'établir le message à envoyer

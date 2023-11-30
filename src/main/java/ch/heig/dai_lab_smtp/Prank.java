@@ -13,8 +13,6 @@ public class Prank {
     private String sender;
     private final List<String> receivers;
     private ReadFiles.Message message;
-    private String subject;
-    private String body;
     private static final Random random = new Random();
 
 
@@ -45,8 +43,6 @@ public class Prank {
         this.sender = null;
         this.receivers = new ArrayList<>();
         this.message = null;
-        this.body = null;
-        this.subject = null;
     }
 
     /**
@@ -73,18 +69,10 @@ public class Prank {
         return this.message;
     }
 
-    public String getSubject() {
-        return this.subject;
-    }
-
-    public String getBody() {
-        return this.body;
-    }
-
     /**
      * Pour l'instant, on crée un seul groupe dans cette fonction...
      */
-    public void generateNewPrank(){ // TODO : Improve by storing full list so we don't need to read file multiple times ?
+    public void generateNewPrank(){
 
         // Clear the receivers list
         this.receivers.clear();
@@ -99,7 +87,5 @@ public class Prank {
         }
 
         this.message = messages.get(random.nextInt(messages.size()));
-        this.body = message.getBody();
-        this.subject = message.getSubject();
     }
 }

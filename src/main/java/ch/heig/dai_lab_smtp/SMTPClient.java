@@ -8,9 +8,6 @@ import java.util.List;
 
 import static ch.heig.dai_lab_smtp.Config.*;
 
-// il faut exécuter dans le terminal la commande : docker run -d -p 1080:1080 -p 1025:1025 maildev/maildev
-// http://localhost:1080/#/ --> on pourra lire sur ce site les messages
-
 public class SMTPClient {
 
     private PrintWriter out;

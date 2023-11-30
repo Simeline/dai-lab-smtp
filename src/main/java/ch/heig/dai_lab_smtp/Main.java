@@ -1,6 +1,6 @@
 package ch.heig.dai_lab_smtp;
 
-import static ch.heig.dai_lab_smtp.Config.*;
+import static ch.heig.dai_lab_smtp.Configuration.*;
 
 
 public class Main {

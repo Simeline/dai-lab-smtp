@@ -6,7 +6,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.List;
 
-import static ch.heig.dai_lab_smtp.Config.*;
+import static ch.heig.dai_lab_smtp.Configuration.*;
 
 public class SMTPClient {
 

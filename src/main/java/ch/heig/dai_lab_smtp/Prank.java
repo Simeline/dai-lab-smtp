@@ -69,7 +69,7 @@ public class Prank {
     }
 
     /**
-     * Pour l'instant, on crée un seul groupe dans cette fonction...
+     * Cette fonction permet de générer le groupe pranké, c'est-à-dire expéditeur et destinataires ainsi que le message
      */
     public void generateNewPrank(){
 

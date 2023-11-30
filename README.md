@@ -32,7 +32,7 @@ chacune étant soumise à une validation par un motif spécifique.
 Un message est composé d'un sujet et d'un corps de message. 
 
 Les messages peuvent être lus sous le format .txt mais doivent être séparés par "---" ou bien ils peuvent être lus sous le format .json.
-De plus, il faut placer les messages dans le rérpertoire [resources](src/main/resources).
+De plus, il faut placer les messages dans le répertoire [resources](src/main/resources).
 
 ### Déterminer la taille d'un groupe et le nombre de groupes
 

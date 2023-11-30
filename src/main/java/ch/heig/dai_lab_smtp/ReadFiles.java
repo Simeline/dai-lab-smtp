@@ -57,9 +57,6 @@ public class ReadFiles {
         return match.find();
     }
 
-
-    // static parce que c'est indépendant de la classe, on peut utiliser la fonction sans créer / instancier la classe
-
     /**
      * Fonction de lecture d'un fichier de messages txt
      * @param path chemin jusqu'au fichier.txt
@@ -87,7 +84,8 @@ public class ReadFiles {
             messages.add(messageCourant.toString()); // Ajouter le dernier message
         }
         catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("ERREUR lors de la lecture du fichier de messages (txt) : " + e.getMessage());
+            System.exit(1);
         }
 
         if(shuffle)
@@ -123,7 +121,8 @@ public class ReadFiles {
                 messages.add(message);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("ERREUR lors de la lecture du fichier de messages (json) : " + e.getMessage());
+            System.exit(1);
         }
 
         if(shuffle)
@@ -153,7 +152,8 @@ public class ReadFiles {
             }
         }
         catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("ERREUR lors de la lecture du fichier d'adresses e-mails : " + e.getMessage());
+            System.exit(1);
         }
 
         if(shuffle)

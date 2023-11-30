@@ -32,11 +32,18 @@ public class Prank {
      */
     public Prank(String fileVictims, String fileMessages, int groupSize) {
 
+
+
         // Get the sender and receivers
-        this.victimes = ReadFiles.lireListeVictimes(fileVictims, true);;
+        this.victimes = ReadFiles.lireListeVictimes(fileVictims, true);
         // Get the message
         messages = ReadFiles.lireListeMessagesJSON(fileMessages, true);
-        // Get the size of the group
+        // Get the size of the group. If the size is invalid, get a random
+        if(groupSize < 2 || groupSize > 5)
+        {
+            System.err.println("ERREUR avec la taille du groupe");
+            System.exit(1);
+        }
         this.numberPersonPerGroup = groupSize;
 
         this.sender = null;

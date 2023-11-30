@@ -80,7 +80,8 @@ public class SMTPClient {
             System.out.println();
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("ERREUR lors de l'envoie du message : " + e.getMessage());
+            System.exit(1);
         }
     }
 }

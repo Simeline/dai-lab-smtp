@@ -30,6 +30,7 @@ public class SMTPClient {
     }
 
     private void writeToServer(String message) throws IOException {
+        System.out.println("(C): " + message);
         out.println(message);
     }
 
@@ -64,10 +65,6 @@ public class SMTPClient {
             writeToServer("Content-Transfer-Encoding: base64"); // obligatoire pour pouvoir lire le "é" de réponse
             writeToServer("Subject: " + subject);
             writeToServer("From: <" + sender + ">");
-
-            for (String to : receivers) {
-                writeToServer("To: <" + to + ">");
-            }
 
             writeToServer(""); // obligatoire pour lire le body
             writeToServer(Base64.getEncoder().encodeToString(message.getBytes(StandardCharsets.UTF_8))); // body

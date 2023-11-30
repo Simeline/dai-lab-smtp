@@ -3,7 +3,6 @@ package ch.heig.dai_lab_smtp;
 import java.io.*;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
-import java.util.Base64;
 import java.util.List;
 
 import static ch.heig.dai_lab_smtp.Configuration.*;
@@ -36,7 +35,7 @@ public class SMTPClient {
     public void sendMessage(String subject, String message, String sender, List<String> receivers) {
 
         try {
-            Socket socket = new Socket(localhost, port);
+            Socket socket = new Socket(LOCALHOST, PORT);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8));
             out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8), true);
 
@@ -65,10 +64,9 @@ public class SMTPClient {
             writeToServer("From: <" + sender + ">");
 
             writeToServer(""); // obligatoire pour lire le body
-            var split = message.split("\\\\n"); // Permet de traiter les retour à la ligne
-            for (String s : split) {
-                writeToServer(s + "\r\n");
-            }
+
+            writeToServer(message);
+
 
             writeToServer("\r\n.\r\n"); // signifie la fin du body
             writeToServer("QUIT");

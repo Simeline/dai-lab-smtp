@@ -31,7 +31,7 @@ chacune étant soumise à une validation par un motif spécifique.
 
 Un message est composé d'un sujet et d'un corps de message. 
 
-Les messages peuvent être lus sous le format .txt mais doivent être séparés par "---" ou bien ils peuvent être lus sous le format .json.
+Les messages peuvent sont lus sous le format .json.
 De plus, il faut placer les messages dans le répertoire [resources](src/main/resources).
 
 ### Déterminer la taille d'un groupe et le nombre de groupes
@@ -64,24 +64,35 @@ Le code se décompose en 4 parties :
 ## Exemple d'échange
 Cette partie représente les messages du serveur suite à l'envoi d'un mail par le client.
 
-    (C): Connexion au serveur 
     (S): 220 1e19ce8517f9 ESMTP
     (C): EHLO localhost
     (S): 250-PIPELINING
     (S): 250-8BITMIME
     (S): 250 SMTPUTF8
-    (C): MAIL FROM <adresse expéditeur>
+    (C): MAIL FROM: <calvin.graf@heig-vd.ch>
     (S): 250 Accepted
-    (C): RCPT TO <adresse d'un destinataire> 
+    (C): RCPT TO: <simon.guggisberg@heig-vd.ch>
     (S): 250 Accepted
-    (C): RCPT TO <adresse d'un destinataire> 
+    (C): RCPT TO: <valentin.bonzon@heig-vd.ch>
     (S): 250 Accepted
     (C): DATA
     (S): 354 End data with <CR><LF>.<CR><LF>
-    (C): sujet
-    (C): ligne vide
-    (C): body
-    (C): "\r\n.\r\n"
+    (C): Content-Type: text/plain; charset=UTF-8
+    (C): Subject: Pour notre amitié sans faille
+    (C): From: <calvin.graf@heig-vd.ch>
+    (C):
+    (C): Salut,
+
+    Je voulais juste prendre un moment pour te dire à quel point notre amitié compte pour moi. Tu es comme le code source de ma vie, apportant de la joie, de la stabilité et une tonne de rires. Nos moments partagés sont comme des fonctions bien définies : ils rendent ma vie beaucoup plus facile et plus amusante.
+
+    Chaque fois que je pense à notre amitié, je me rends compte à quel point tu es une constante précieuse dans ma vie. Tu es le point virgule à mes phrases, la virgule à mes listes de moments heureux et le point d'exclamation à mes jours ordinaires.
+    
+    Merci d'être toujours là pour moi, même dans les moments les plus turbulents. J'apprécie chaque ligne de code que nous avons écrite ensemble dans le grand livre de notre amitié.
+    
+    À toutes nos aventures passées et à venir !
+    (C):
+    .
+    
     (C): QUIT
 
 

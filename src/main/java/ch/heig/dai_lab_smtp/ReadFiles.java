@@ -60,42 +60,6 @@ public class ReadFiles {
     }
 
     /**
-     * Fonction de lecture d'un fichier de messages txt
-     *
-     * @param path chemin jusqu'au fichier.txt
-     * @return une liste de toutes les messages d'un fichier séparés par "---"
-     */
-    public static List<String> lireListeMessagesTXT(String path, boolean shuffle) {
-
-        List<String> messages = new ArrayList<>();
-        StringBuilder messageCourant = new StringBuilder();
-
-        try (var reader = new BufferedReader(new FileReader(path))) {
-
-            String ligne;
-
-            while ((ligne = reader.readLine()) != null) {
-
-                if (ligne.equals("---")) {
-                    messages.add(messageCourant.toString());
-                    messageCourant.setLength(0); // Réinitialiser le StringBuilder
-                } else {
-                    messageCourant.append(ligne).append("\n");
-                }
-            }
-            messages.add(messageCourant.toString()); // Ajouter le dernier message
-        } catch (IOException e) {
-            System.err.println("ERREUR lors de la lecture du fichier de messages (txt) : " + e.getMessage());
-            System.exit(1);
-        }
-
-        if (shuffle)
-            Collections.shuffle(messages);
-
-        return messages;
-    }
-
-    /**
      * Fonction de lecture d'un fichier de messages json
      *
      * @param path chemin jusqu'au fichier.json

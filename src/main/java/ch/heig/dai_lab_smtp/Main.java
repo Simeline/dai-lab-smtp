@@ -8,15 +8,15 @@ public class Main {
     public static void main(String[] args) {
 
         // Check the number of groups
-        if (nbGroups < 1) {
-            System.err.println("ERREUR : Nombre de groupes invalide. Doit être suppérieur à 1.");
+        if (NB_GROUPS < 1) {
+            System.err.println("ERREUR : Nombre de groupes invalide. Doit être supérieur à 1.");
             return;
         }
 
         SMTPClient client = new SMTPClient();
-        Prank prank = new Prank(FILE_VICTIMES, FILE_MESSAGES, nbPersonPerGroups);
+        Prank prank = new Prank(FILE_VICTIMES, FILE_MESSAGES, NB_PERSON_PER_GROUPS);
 
-        for (int i = 0; i < nbGroups; i++) {
+        for (int i = 0; i < NB_GROUPS; i++) {
             prank.generateNewPrank();
             client.sendMessage(prank.getMessageSubject(), prank.getMessageBody(), prank.getSender(), prank.getReceivers());
         }

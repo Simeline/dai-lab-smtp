@@ -69,6 +69,22 @@ public class Prank {
     }
 
     /**
+     * Getter
+     * @return String
+     */
+    public String getMessageSubject(){
+        return this.message.getSubject();
+    }
+
+    /**
+     * Getter
+     * @return String
+     */
+    public String getMessageBody(){
+        return this.message.getBody();
+    }
+
+    /**
      * Cette fonction permet de générer le groupe pranké, c'est-à-dire expéditeur et destinataires ainsi que le message
      */
     public void generateNewPrank(){

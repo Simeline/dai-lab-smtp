@@ -12,7 +12,7 @@ public class Main {
 
         for (int i = 0; i < nbGroups; i++) {
             prank.generateNewPrank();
-            client.sendMessage(prank.getMessage().getSubject(), prank.getMessage().getBody(), prank.getSender(), prank.getReceivers());
+            client.sendMessage(prank.getMessageSubject(), prank.getMessageBody(), prank.getSender(), prank.getReceivers());
         }
     }
 }

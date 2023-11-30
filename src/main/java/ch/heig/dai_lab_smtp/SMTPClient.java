@@ -13,8 +13,7 @@ public class SMTPClient {
     private PrintWriter out;
     private BufferedReader in;
 
-    private void readHeader() throws IOException
-    {
+    private void readHeader() throws IOException {
         String line = in.readLine();
         if (!line.startsWith("250")) {
             throw new IOException("SMTP error: " + line);

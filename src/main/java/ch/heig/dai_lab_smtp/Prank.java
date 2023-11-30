@@ -17,7 +17,8 @@ public class Prank {
 
     /**
      * Constructeur qui par défaut crée un groupe de 5
-     * @param fileVictims fichiers des victimes
+     *
+     * @param fileVictims  fichiers des victimes
      * @param fileMessages fichiers des messages
      */
     public Prank(String fileVictims, String fileMessages) {
@@ -26,9 +27,10 @@ public class Prank {
 
     /**
      * Constructeur qui annonce la taille du groupe
-     * @param fileVictims fichiers des victimes
+     *
+     * @param fileVictims  fichiers des victimes
      * @param fileMessages fichiers des messages
-     * @param groupSize taille du groupe
+     * @param groupSize    taille du groupe
      */
     public Prank(String fileVictims, String fileMessages, int groupSize) {
         // Get the sender and receivers
@@ -36,15 +38,14 @@ public class Prank {
         // Get the message
         this.messages = ReadFiles.lireListeMessagesJSON(fileMessages, true);
         // Get the size of the group, if valid
-        if(groupSize < 2 || groupSize > 5)
-        {
+        if (groupSize < 2 || groupSize > 5) {
             System.err.println("ERREUR : Taille du groupe invalide. Doit appartenir à l'intervalle [2;5].");
             System.exit(1);
         }
         this.numberPersonPerGroup = groupSize;
 
         // Check there is enough emails
-        if(this.victimes.size() < this.numberPersonPerGroup){
+        if (this.victimes.size() < this.numberPersonPerGroup) {
             System.err.println("ERREUR : Nombre d'e-mails insuffisants dans le fichier.");
             System.exit(1);
         }
@@ -56,48 +57,53 @@ public class Prank {
 
     /**
      * Getter
+     *
      * @return l'expéditeur
      */
-    public String getSender(){
+    public String getSender() {
         return this.sender;
     }
 
     /**
      * Getter
+     *
      * @return liste des destinataires
      */
-    public List<String> getReceivers(){
+    public List<String> getReceivers() {
         return this.receivers;
     }
 
     /**
      * Getter
+     *
      * @return un type Message qui comprend le corps et le sujet du message
      */
-    public ReadFiles.Message getMessage(){
+    public ReadFiles.Message getMessage() {
         return this.message;
     }
 
     /**
      * Getter
+     *
      * @return String
      */
-    public String getMessageSubject(){
+    public String getMessageSubject() {
         return this.message.getSubject();
     }
 
     /**
      * Getter
+     *
      * @return String
      */
-    public String getMessageBody(){
+    public String getMessageBody() {
         return this.message.getBody();
     }
 
     /**
      * Cette fonction permet de générer le groupe pranké, c'est-à-dire expéditeur et destinataires ainsi que le message
      */
-    public void generateNewPrank(){
+    public void generateNewPrank() {
 
         // Clear the receivers list
         this.receivers.clear();

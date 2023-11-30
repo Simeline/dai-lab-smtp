@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
 
         // Check the number of groups
-        if(nbGroups < 1){
+        if (nbGroups < 1) {
             System.err.println("ERREUR : Nombre de groupes invalide. Doit être suppérieur à 1.");
             return;
         }

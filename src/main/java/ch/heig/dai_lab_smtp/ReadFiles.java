@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -49,6 +50,7 @@ public class ReadFiles {
 
     /**
      * Fonction de vérification d'adresse mail
+     *
      * @param keyword email à vérifier
      * @return si l'adresse est valide ou non
      */
@@ -59,6 +61,7 @@ public class ReadFiles {
 
     /**
      * Fonction de lecture d'un fichier de messages txt
+     *
      * @param path chemin jusqu'au fichier.txt
      * @return une liste de toutes les messages d'un fichier séparés par "---"
      */
@@ -76,19 +79,17 @@ public class ReadFiles {
                 if (ligne.equals("---")) {
                     messages.add(messageCourant.toString());
                     messageCourant.setLength(0); // Réinitialiser le StringBuilder
-                }
-                else {
+                } else {
                     messageCourant.append(ligne).append("\n");
                 }
             }
             messages.add(messageCourant.toString()); // Ajouter le dernier message
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             System.err.println("ERREUR lors de la lecture du fichier de messages (txt) : " + e.getMessage());
             System.exit(1);
         }
 
-        if(shuffle)
+        if (shuffle)
             Collections.shuffle(messages);
 
         return messages;
@@ -96,6 +97,7 @@ public class ReadFiles {
 
     /**
      * Fonction de lecture d'un fichier de messages json
+     *
      * @param path chemin jusqu'au fichier.json
      * @return une liste de toutes les lignes du fichier
      */
@@ -125,7 +127,7 @@ public class ReadFiles {
             System.exit(1);
         }
 
-        if(shuffle)
+        if (shuffle)
             Collections.shuffle(messages);
 
         return messages;
@@ -133,6 +135,7 @@ public class ReadFiles {
 
     /**
      * Fonction de lecture du fichier des adresses mails
+     *
      * @param path chemin jusqu'au fichier.txt
      * @return une liste de toutes les victimes
      */
@@ -150,15 +153,14 @@ public class ReadFiles {
                     System.err.println("ERREUR dans l'adresse mail : " + ligne);
                 }
             }
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             System.err.println("ERREUR lors de la lecture du fichier d'adresses e-mails : " + e.getMessage());
             System.exit(1);
         }
 
-        if(shuffle)
+        if (shuffle)
             Collections.shuffle(victimes);
 
-        return  victimes;
+        return victimes;
     }
 }

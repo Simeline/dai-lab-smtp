@@ -9,7 +9,6 @@ public class Prank {
     private final List<String> victimes;
     private final List<ReadFiles.Message> messages;
     private final int numberPersonPerGroup;
-
     private String sender;
     private final List<String> receivers;
     private ReadFiles.Message message;

@@ -21,7 +21,7 @@ public class ReadFiles {
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
     /**
-     * Cette classe est utilisée pour la lecture des fichiers JSON
+     * Cette classe interne est utilisée pour la lecture des fichiers JSON
      */
     public static class Message {
         private final String subject;

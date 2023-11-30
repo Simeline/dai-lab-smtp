@@ -72,7 +72,7 @@ public class SMTPClient {
             writeToServer(""); // obligatoire pour lire le body
             writeToServer(Base64.getEncoder().encodeToString(message.getBytes(StandardCharsets.UTF_8))); // body
 
-            writeToServer("\r\n.\r\n");
+            writeToServer("\r\n.\r\n"); // signifie la fin du body
             writeToServer("QUIT");
             out.close();
             in.close();

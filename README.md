@@ -1,53 +1,95 @@
 # Rapport laboratoire n°4 - SMTP
 
 # Introduction
+
 L'objectif de ce laboratoire est de mettre en place un client SMTP qui envoie des pranks à une liste de victimes.
 L'utilisateur doit fournir une liste de victimes et une liste de messages à envoyer.
 
 Pour tester que les messages SMTP soient correctement envoyés, nous avons mis en place un serveur Mock SMTP.
-Ce serveur a été déployé en utilisant l'outil Docker. Pour le lancer, il faut exécuter, dans le terminal, la commande :  
-    
+Ce serveur a été déployé en utilisant l'outil Docker. Pour le lancer, il faut exécuter, dans le terminal, la commande :
+
+```
     docker run -d -p 1080:1080 -p 1025:1025 maildev/maildev
+```
 
-Puis il suffit de lancer l'URL suivant pour visualiser le serveur Mock SMTP sur l'interface web : 
+Puis il suffit de lancer l'URL suivant pour visualiser le serveur Mock SMTP sur l'interface web :
 
+```
     http://localhost:1080
+```
 
 # MailDev
+
 ## Description
-[MailDev](https://github.com/maildev/maildev) est un serveur de simulation qui appartient à la catégorie des outils permettant de reproduire 
-le comportement d'un vrai service SMTP. Cette approche évite de surcharger un serveur SMTP en production, 
+
+[MailDev](https://github.com/maildev/maildev) est un serveur de simulation qui appartient à la catégorie des outils
+permettant de reproduire
+le comportement d'un vrai service SMTP. Cette approche évite de surcharger un serveur SMTP en production,
 ce qui pourrait entraîner des problèmes de blacklistage.
 
 # Client SMTP
+
 ## Configuration
+
 Le client SMTP se configure en deux étapes :
-- Etablir la liste de victimes et la liste de messages et les placer dans le répertoire "resources"
-- Déterminer la taille d'un groupe et le nombre de groupes dans le fichier de [Configuration](src/main/java/ch/heig/dai_lab_smtp/Configuration.java)
 
-### Etablir la liste de victimes et la liste de messages
-Les adresses mails des victimes sont placées dans le fichier [victims](src/main/resources/victims.txt), 
-chacune étant soumise à une validation par un motif spécifique.
+- Etablir la liste de victimes et la liste de messages
+- Déterminer les différentes valeurs de configuration dans le fichier
+  de [Configuration](src/main/java/ch/heig/dai_lab_smtp/Configuration.java)
 
-Un message est composé d'un sujet et d'un corps de message. 
+### Liste de victimes et liste de messages
 
-Les messages peuvent sont lus sous le format .json.
-De plus, il faut placer les messages dans le répertoire [resources](src/main/resources).
+Afin de pouvoir envoyer une grande quantité de mails dans un laps de temps court, il est nécessaire d'établir deux
+listes : la liste des adresses mail des victimes ainsi que la liste des messages qui peuvent leur être envoyés.
 
-### Déterminer la taille d'un groupe et le nombre de groupes
+Les adresses mail des victimes sont placées dans un premier fichier, au format texte. Chaque adresse mail sera soumise à
+une validation
+à l'aide d'une expression régulière, afin de vérifier qu'elle possède un format valide.
+Les messages, quant à eux, sont placés dans un autre fichier, au format json cette fois. Chaque message doit être
+composé d'un sujet et d'un corps de message.
 
-Dans la classe Configuration, il faut insérer le nombre de groupes souhaité ainsi que leur taille.
-Ces informations détermineront le nombre de victimes du Prank.
+Pour plus de simplicité, il est conseillé de placer ces deux fichiers dans le
+répertoire [resources](src/main/resources).
 
-D'autres informations, telles que le numéro de port ou les chemins absolus peuvent être également modifiées dans ce même fichier.
+### Autres valeurs de configuration
+
+Dans la classe Configuration, plusieurs valeurs sont à renseigner. Il faudra choisir le nombre de groupes (nombre
+supérieur à 0) ainsi que le nombre de personnes par groupes, en comptant l'expéditeur. La taille d'un groupe doit être
+d'un minimum de 2 personnes et d'un maximum de 5 personnes. Ces informations détermineront le nombre de victimes du
+Prank.
+
+D'autres informations sont configurables dans cette classe, telles que le numéro de port du serveur ou les chemins
+(absolus ou relatifs) des deux fichiers préparés au point précédent.
 
 ## Utilisation
 
-Une fois toutes les configurations réalisées, il ne vous reste plus qu'à lancer le programme Main.
-Pour réaliser cette étape, vous devez vous rendre dans le dossier qui contient l'exécutable, 
-c'est-à-dire le dossier [Main](src/main/java/ch/heig/dai_lab_smtp/Main.java) et lancer le programme.
+Une fois toutes les configurations réalisées, deux options sont disponibles pour le lancement de l'application:
+directement depuis l'IDE ou via un fichier JAR. Dans les deux cas, il sera alors possible d'observer les mails envoyés
+via l'interface web offerte par Maildev.
+
+### Lancement depuis l'IDE
+
+Cette manière de procéder est la plus simple, mais peut varier d'un IDE à l'autre. Une fois le serveur mail lancé dans
+docker, il suffit de lancer l'exécution de la classe [Main](src/main/java/ch/heig/dai_lab_smtp/Main.java).
 
 A titre informatif, le code a été rédigé en Java via un IDE tel qu'IntelliJ IDEA.
+
+### Lancement depuis un fichier JAR
+
+Afin de pouvoir lancer l'application de cette manière, il est nécessaire d'en faire un package, à l'aide de la
+commande suivante :
+
+```
+mvn clean compile assembly:single
+```
+
+Une fois fait, l'application est exécutable avec la commande :
+
+```
+java -jar .\target\SMTP_Prank-1.0-jar-with-dependencies.jar
+```
+
+Aucun argument n'est nécessaire, puisque toute la configuration se fait via le fichier de configuration.
 
 ## Implémentation
 
@@ -55,15 +97,21 @@ Pour comprendre la présente implémentation, vous pouvez déchiffrer le diagram
 
 ![Diagramme UML](src/main/figures/Diagramme.png)
 
-Le code se décompose en 4 parties :
-- **Main** : cette section représente le thread principal
-- **ReadFiles** : classe qui s'occupe de récupérer les informations des resources
-- **Prank** : classe qui s'occupe de séparer l'expéditeur des destinataires au sein d'un groupe et d'établir le message à envoyer
-- **SMTPCLient** : cette section est l'élément central de notre code. Il expédie, via un socket, un message aux différents acteurs d'un même groupe
+Le code se décompose en 4 parties distinctes :
+
+- **Main** : Cette classe permet le déroulement principal de l'application. On y itère pour générer les Prank et envoyer
+  les messages.
+- **ReadFiles** : Cette classe s'occupe de récupérer les informations des fichiers de ressources (victimes et messages).
+  Une classe interne permet également une utilisation plus simple des différentes parties d'un message.
+- **Prank** : Cette classe s'occupe de préparer les différents composants nécessaires, à savoir l'expéditeur, les
+  destinataires et le message. Une méthode permet également de générer une nouvelle combinaison de ces valeurs.
+- **SMTPCLient** : Cette classe est l'élément central de notre code, à savoir l'expédition, via un socket, du message aux
+  différents destinataires.
 
 ## Exemple d'échange
-Cette partie représente les messages du serveur suite à l'envoi d'un mail par le client.
 
+Cette partie représente les messages du serveur suite à l'envoi d'un mail par le client.
+```
     (S): 220 1e19ce8517f9 ESMTP
     (C): EHLO localhost
     (S): 250-PIPELINING
@@ -94,6 +142,4 @@ Cette partie représente les messages du serveur suite à l'envoi d'un mail par 
     .
     
     (C): QUIT
-
-
-
+```
